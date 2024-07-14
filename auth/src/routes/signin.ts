@@ -1,10 +1,10 @@
 import express, { NextFunction, Response, Request } from "express";
 import { body, validationResult } from "express-validator";
-import { RequestValidationError } from "./errors/request-validation-error";
-import { validateRequest } from "../middlewares/validate-request";
-import { User } from "./models/user";
-import { BadRequestError } from "./errors/bad-request-error";
-import { Password } from "./services/password";
+import { RequestValidationError } from "../errors/request-validation-error";
+import { validateRequest } from "../../middlewares/validate-request";
+import { User } from "../models/user";
+import { BadRequestError } from "../errors/bad-request-error";
+import { Password } from "../services/password";
 import jwt from "jsonwebtoken";
 
 const router = express.Router();
@@ -20,22 +20,20 @@ router.post(
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    if (!user){
-        return next(new BadRequestError("user does not exist"))
+    if (!user) {
+      return next(new BadRequestError("user does not exist"));
     }
 
-    
     const passwordMatched = await Password.compare(user.password, password);
     if (!passwordMatched) {
-        return next(new BadRequestError("wrong password"))
+      return next(new BadRequestError("wrong password"));
     }
 
     const userJwt = jwt.sign(
-        { id: user.id, email: user.email },
-        process.env.JWT_KEY!
-      );
-      req.session = { jwt: userJwt };
-
+      { id: user.id, email: user.email },
+      process.env.JWT_KEY!
+    );
+    req.session = { jwt: userJwt };
 
     res.status(200).send(user);
   }
