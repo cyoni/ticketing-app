@@ -3,7 +3,7 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - "./infra/k8s/*"  # Added quotes around the wildcard pattern for better readability and to avoid parsing issues
+      - "./infra/k8s/*"
 
 build:
   local:
@@ -15,5 +15,13 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: "src/**/*.ts"  # Added quotes around the wildcard pattern
+          - src: "src/**/*.ts"
+            dest: .
+    - image: cyoni/ticketing-client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.ts"
             dest: .
