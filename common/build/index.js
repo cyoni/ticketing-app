@@ -21,5 +21,5 @@ __exportStar(require("./errors/not-authorized-error"), exports);
 __exportStar(require("./errors/request-validation-error"), exports);
 __exportStar(require("./middlewares/current-user.middleware"), exports);
 __exportStar(require("./middlewares/error-handler"), exports);
-__exportStar(require("./middlewares/require-auth.middleware copy"), exports);
+__exportStar(require("./middlewares/require-auth.middleware"), exports);
 __exportStar(require("./middlewares/validate-request"), exports);

@@ -5,5 +5,5 @@ export * from "./errors/not-authorized-error";
 export * from "./errors/request-validation-error";
 export * from "./middlewares/current-user.middleware";
 export * from "./middlewares/error-handler";
-export * from "./middlewares/require-auth.middleware copy";
+export * from "./middlewares/require-auth.middleware";
 export * from "./middlewares/validate-request";
