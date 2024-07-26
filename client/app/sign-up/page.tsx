@@ -12,7 +12,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -24,6 +25,10 @@ const signinSchema = z.object({
 });
 
 function SignUp() {
+  const router = useRouter();
+
+  const [error, setError] = useState(false);
+
   const form = useForm<z.infer<typeof signinSchema>>({
     resolver: zodResolver(signinSchema),
     defaultValues: {
@@ -33,6 +38,7 @@ function SignUp() {
   });
 
   async function handleSignin(values: z.infer<typeof signinSchema>) {
+    setError(false);
     try {
       const res = await fetch("/api/users/signup", {
         method: "POST",
@@ -44,12 +50,14 @@ function SignUp() {
 
       if (res.status === 201) {
         console.log("success!");
-      }
-      else{
+        router.push("/");
+      } else {
+        setError(true);
         console.log("could not sign up");
       }
       console.log("json", json);
     } catch (error) {
+      setError(true);
       console.log("error", error);
     }
   }
@@ -92,6 +100,8 @@ function SignUp() {
           <Button variant={"default"} type="submit" className="flex gap-2">
             <span>Sign In</span>
           </Button>
+
+          {error && <p className="text-red-500">Wrong email/password</p>}
         </form>
       </Form>
 

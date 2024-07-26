@@ -1,6 +1,5 @@
+import { CurrentUser, RequireAuth } from "@cyoni10/common";
 import express from "express";
-import { CurrentUser } from "../../../client/middlewares/current-user.middleware";
-import { RequireAuth } from "../../../client/middlewares/require-auth.middleware copy";
 
 const router = express.Router();
 
