@@ -4,8 +4,12 @@ import { app } from "./app";
 const start = async () => {
   if (!process.env.JWT_KEY) throw new Error("JWT_KEY must be provided");
 
+  if (!process.env.MONGO_URI) {
+    throw Error("MONGO_URI is missing");
+  }
+
   try {
-    await mongoose.connect("mongodb://auth-mongo-srv:27017/auth");
+    await mongoose.connect(process.env.MONGO_URI);
   } catch (error) {
     console.error(error);
   }

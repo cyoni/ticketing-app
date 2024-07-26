@@ -19,6 +19,8 @@ export const CurrentUser = (
   res: Response,
   next: NextFunction
 ) => {
+
+  console.log("jwt", req?.session?.jwt)
   if (!req.session || !req.session.jwt) {
     return next();
   }
