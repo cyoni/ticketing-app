@@ -1,17 +1,10 @@
 {
-  "name": "@cyoni10/common",
-  "version": "1.0.12",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
-  "files": [
-    "build/**/*"
-  ],
+  "name": "tickets",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "clean": "del-cli ./build",
     "dev": "nodemon ./src/index.ts",
-    "test": "jest --watchAll --no-cache",
-    "build": "npm run clean && tsc",
-    "pub": "git commit -am \"updates\" && npm version patch && npm run build && npm publish"
+    "test": "jest --watchAll --no-cache"
   },
   "jest": {
     "preset": "ts-jest",
@@ -25,7 +18,9 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@cyoni10/common": "^1.0.10",
     "@types/express": "^4.17.21",
+    "cookie-parser": "^1.4.6",
     "cookie-session": "^2.1.0",
     "crypto": "^1.0.1",
     "express": "^4.19.2",
@@ -39,7 +34,6 @@
     "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/supertest": "^6.0.2",
-    "del-cli": "^5.1.0",
     "jest": "^29.7.0",
     "mongodb-memory-server": "^9.4.1",
     "supertest": "^7.0.0",

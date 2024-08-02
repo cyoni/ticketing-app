@@ -4,6 +4,7 @@ import { app } from "../../app";
 it("gets details of a user", async () => {
   const cookie = (await global.signup()) as string[];
 
+  console.log("got cookue", cookie)
   const user = await request(app)
     .get("/current-user")
     .set("Cookie", cookie)
@@ -13,8 +14,8 @@ it("gets details of a user", async () => {
 });
 
 it("makes sure unauthenticated user gets null", async () => {
-  const res = await request(app).get("/current-user").send().expect(200);
+  const res = await request(app).get("/current-user").send().expect(401);
 
 
-  expect(res.body.currentUser).toBeNull();
+  expect(res.body.currentUser).toBeUndefined();
 });

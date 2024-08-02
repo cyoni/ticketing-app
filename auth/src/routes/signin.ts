@@ -1,6 +1,6 @@
 import express, { NextFunction, Response, Request } from "express";
 import { body } from "express-validator";
-import { User } from "../models/user";
+import { User } from "../models/user.model";
 import { Password } from "../services/password";
 import jwt from "jsonwebtoken";
 import { BadRequestError, validateRequest } from "@cyoni10/common";
