@@ -1,6 +1,7 @@
 import express, { json } from "express";
 import cookieSession from "cookie-session";
 import { newRouter } from "./routes/new.route";
+import { indexRouter } from "./routes/index.route";
 import { CurrentUser } from "@cyoni10/common";
 const cookieParser = require("cookie-parser");
 
@@ -9,7 +10,6 @@ app.set("trust proxy", true);
 app.use(json());
 
 app.use(cookieParser());
-
 
 app.use(
   cookieSession({
@@ -20,17 +20,17 @@ app.use(
   })
 );
 
-app.use((req)=> {
-    const cc = req.cookies
-    console.log("ABCDEF@@@", JSON.stringify(cc))
-    console.log("req.session??", JSON.stringify(req.session))
-})
-
+app.use((req) => {
+  const cc = req.cookies;
+  console.log("ABCDEF@@@", JSON.stringify(cc));
+  console.log("req.session??", JSON.stringify(req.session));
+});
 
 app.use(express.json());
 
 app.use(CurrentUser);
 app.use(newRouter);
+app.use(indexRouter);
 
 app.get("/currentuser", (req, res) => {
   res.send("hello user");
