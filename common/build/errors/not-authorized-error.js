@@ -20,7 +20,7 @@ var customError_1 = require("./customError");
 var NotAuthorizedError = /** @class */ (function (_super) {
     __extends(NotAuthorizedError, _super);
     function NotAuthorizedError(message) {
-        var _this = _super.call(this, message || "Not authorized") || this;
+        var _this = _super.call(this, message !== null && message !== void 0 ? message : "Not authorized") || this;
         _this.message = message;
         _this.reason = "not authorized";
         _this.statusCode = 401;

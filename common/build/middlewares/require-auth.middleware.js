@@ -5,7 +5,7 @@ var not_authorized_error_1 = require("../errors/not-authorized-error");
 var RequireAuth = function (req, res, next) {
     console.log("req.currentUser", req.currentUser);
     if (!req.currentUser) {
-        return next(new not_authorized_error_1.NotAuthorizedError());
+        return next(new not_authorized_error_1.NotAuthorizedError(""));
     }
     next();
 };

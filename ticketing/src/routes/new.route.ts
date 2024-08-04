@@ -26,7 +26,7 @@ router.post(
 
     console.log("got cookie", req.cookies);
     console.log("and session....", JSON.stringify(req.session));
-    res.sendStatus(200);
+    res.sendStatus(201);
   }
 );
 
