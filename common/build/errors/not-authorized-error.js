@@ -19,8 +19,9 @@ exports.NotAuthorizedError = void 0;
 var customError_1 = require("./customError");
 var NotAuthorizedError = /** @class */ (function (_super) {
     __extends(NotAuthorizedError, _super);
-    function NotAuthorizedError() {
-        var _this = _super.call(this, "not authorized") || this;
+    function NotAuthorizedError(message) {
+        var _this = _super.call(this, message || "Not authorized") || this;
+        _this.message = message;
         _this.reason = "not authorized";
         _this.statusCode = 401;
         Object.setPrototypeOf(_this, NotAuthorizedError.prototype);
