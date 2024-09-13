@@ -32,6 +32,7 @@
     "express-validator": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.4",
+    "node-nats-streaming": "^0.3.2",
     "nodemon": "^3.1.4"
   },
   "devDependencies": {
