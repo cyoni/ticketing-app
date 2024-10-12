@@ -18,7 +18,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@cyoni10/common": "^1.0.14",
+    "@cyoni10/common": "^1.0.15",
     "@types/express": "^4.17.21",
     "cookie-parser": "^1.4.6",
     "cookie-session": "^2.1.0",

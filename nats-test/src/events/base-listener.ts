@@ -1,7 +1,6 @@
 import { Message, Stan } from "node-nats-streaming";
 import { Subjects } from "./subjects";
 
-type ABC = `${Subjects}`;
 export abstract class Listener<
   T extends {
     subject: Subjects;
